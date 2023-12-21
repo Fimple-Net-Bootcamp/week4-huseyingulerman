@@ -12,6 +12,6 @@ namespace week4_huseyingulerman.Core.Services
 {
     public interface IFoodService:IService<Food,FoodCreateDTO,FoodDTO>
     {
-        Task<IAppResult<FoodDTO>> AddFoodByPetId(FoodCreateDTO foodCreateDTO);
+        
     }
 }

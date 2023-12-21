@@ -27,10 +27,12 @@ namespace week4_huseyingulerman.Service.Mapping
             CreateMap<PetCreateDTO, PetDTO>();
             CreateMap<PetUpdateDTO, Pet>();
 
-            CreateMap<Health, HealthDTO>();
-            CreateMap<HealthCreateDTO, Health>();
-            CreateMap<HealthDTO, HealthCreateDTO>();
-            CreateMap<HealthCreateDTO, HealthDTO>();
+            CreateMap<Health, HealthDTO>().ReverseMap();
+            CreateMap<HealthCreateDTO, Health>().ReverseMap();
+            CreateMap<HealthDTO, HealthCreateDTO>().ReverseMap();
+            CreateMap<HealthCreateDTO, HealthDTO>().ReverseMap();
+            CreateMap<HealthUpdateDTO, Health>().ReverseMap();
+            CreateMap<HealthUpdateDTO, HealthDTO>().ReverseMap();
 
             CreateMap<Activity, ActivityDTO>();
             CreateMap<ActivityCreateDTO, Activity>();
@@ -41,6 +43,19 @@ namespace week4_huseyingulerman.Service.Mapping
             CreateMap<FoodCreateDTO, Food>();
             CreateMap<FoodDTO, FoodCreateDTO>();
             CreateMap<FoodCreateDTO, FoodDTO>();
+
+            //CreateMap<FoodPet, FoodPetDTO>();
+            //CreateMap<FoodPetCreateDTO, FoodPet>();
+            //CreateMap<FoodPetDTO, FoodPetCreateDTO>();
+            //CreateMap<FoodPetCreateDTO, FoodPetDTO>();
+
+
+
+            CreateMap<FoodPet, FoodPetDTO>()
+               .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.Pet.Name))
+               .ForMember(dest => dest.FoodName, opt => opt.MapFrom(src => src.Food.Name));
+              /* .ForMember(dest => dest.FoodDate, opt => opt.MapFrom(src => src.CreatedDate)).ReverseMap()*/;
+
 
 
         }

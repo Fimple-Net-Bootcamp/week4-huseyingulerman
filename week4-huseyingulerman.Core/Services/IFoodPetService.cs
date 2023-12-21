@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using week4_huseyingulerman.Core.DTOs;
 using week4_huseyingulerman.Core.DTOs.Create;
+using week4_huseyingulerman.Core.DTOs;
 using week4_huseyingulerman.Core.Entities;
 using week4_huseyingulerman.Core.Result.Abstract;
 
 namespace week4_huseyingulerman.Core.Services
 {
-    public interface IActivityService:IService<Activity,ActivityCreateDTO,ActivityDTO>
+    public interface IFoodPetService: IService<FoodPet, FoodPetCreateDTO, FoodPetDTO>
     {
-        Task<IAppResult<ActivityDTO>> AddActivityByPetId(ActivityCreateDTO activityCreateDTO);
-        Task<IAppResult<IEnumerable<ActivityDTO>>> GetActivityByPetId(int id);
+        Task<IAppResult<FoodPetDTO>> AddFoodByPetId(int petid, int foodid);
     }
 }

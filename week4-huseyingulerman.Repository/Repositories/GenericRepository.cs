@@ -11,7 +11,7 @@ using week4_huseyingulerman.Core.Repositories;
 
 namespace week4_huseyingulerman.Repository.Repositories
 {
-    public class GenericRepository<T>:IGenericRepository<T> where T : class,IEntity
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, IEntity
     {
         protected readonly AppDbContext _context;
         private readonly DbSet<T> _dbSet;
@@ -91,7 +91,8 @@ namespace week4_huseyingulerman.Repository.Repositories
         {
             try
             {
-                _dbSet.Update(entity);
+                //_dbSet.Update(entity);
+                _dbSet.Attach(entity) ;
                 return true;
             }
             catch (Exception)

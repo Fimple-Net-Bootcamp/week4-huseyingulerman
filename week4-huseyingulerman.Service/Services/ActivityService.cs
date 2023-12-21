@@ -13,6 +13,7 @@ using week4_huseyingulerman.Core.Result.Abstract;
 using week4_huseyingulerman.Core.Result.Concrete;
 using week4_huseyingulerman.Core.UnitOfWork;
 using week4_huseyingulerman.Core.Entities;
+using Azure;
 
 namespace week4_huseyingulerman.Service.Services
 {
@@ -38,11 +39,13 @@ namespace week4_huseyingulerman.Service.Services
             return AppResult<ActivityDTO>.Success(StatusCodes.Status200OK, newResponse);
         }
 
-        public async Task<List<Activity>> GetActivityByPetId(int id)
+        public async Task<IAppResult<IEnumerable<ActivityDTO>>> GetActivityByPetId(int id)
         {
             var activity = await _activityRepository.GetActivityByPetId(id);
+            var newResponse = _mapper.Map<IEnumerable<ActivityDTO>>(activity);
 
-            return activity;
+            //return AppResult<ActivityDTO>.Success(StatusCodes.Status200OK, newResponse);
+            return AppResult<IEnumerable<ActivityDTO>>.Success(StatusCodes.Status200OK, newResponse);
         }
     }
 }

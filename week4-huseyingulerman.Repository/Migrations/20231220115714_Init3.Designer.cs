@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using week4_huseyingulerman.Repository;
 
@@ -11,9 +12,11 @@ using week4_huseyingulerman.Repository;
 namespace week4_huseyingulerman.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231220115714_Init3")]
+    partial class Init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -375,7 +378,7 @@ namespace week4_huseyingulerman.Repository.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("FoodsPets");
+                    b.ToTable("FoodPets");
                 });
 
             modelBuilder.Entity("week4_huseyingulerman.Core.Entities.Health", b =>

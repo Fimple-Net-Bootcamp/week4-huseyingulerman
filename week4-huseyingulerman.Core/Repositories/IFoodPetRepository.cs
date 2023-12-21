@@ -7,8 +7,8 @@ using week4_huseyingulerman.Core.Entities;
 
 namespace week4_huseyingulerman.Core.Repositories
 {
-    public interface IFoodRepository:IGenericRepository<Food>
+    public interface IFoodPetRepository : IGenericRepository<FoodPet>
     {
-     
+        Task<FoodPet> AddFoodByPetId(int petid, int foodid);
     }
 }

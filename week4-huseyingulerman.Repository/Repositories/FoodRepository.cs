@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,6 @@ namespace week4_huseyingulerman.Repository.Repositories
         public FoodRepository(AppDbContext context) : base(context)
         {
         }
-        public async Task AddFoodByPetId(Food food)
-        {
-            await _context.Foods.AddAsync(food);
-        }
+      
     }
 }

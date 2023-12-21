@@ -18,6 +18,7 @@ namespace week4_huseyingulerman.Repository
         {
 
         }
+        public DbSet<FoodPet> FoodsPets { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Health> Healths { get; set; }
