@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using week4_huseyingulerman.Core.DTOs.Create;
 using week4_huseyingulerman.Core.DTOs;
 using week4_huseyingulerman.Core.Entities;
 using week4_huseyingulerman.Core.Result.Abstract;
 
-namespace week4_huseyingulerman.Core.Repositories
+namespace week4_huseyingulerman.Core.Services
 {
-    public interface IPetRepository:IGenericRepository<Pet>
+    public interface IUserService : IService<AppUser, UserCreateDTO, UserDTO>
     {
-        Task<List<Pet>> GetAllPetStatisticByPetId(int id);
-        Task<List<Pet>> GetUserStatisticsByUserId(string userid);
+        Task<IAppResult<List<UserStatisticDTO>>> GetUserStatisticsByUserId(int id);
     }
 }

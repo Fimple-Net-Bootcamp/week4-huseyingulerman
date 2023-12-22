@@ -15,13 +15,17 @@ namespace week4_huseyingulerman.Core.Entities
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
         public ICollection<Health> Healths { get; set; }
-        public ICollection<Activity> Activities { get; set; }
-        public ICollection<Food> Foods { get; set; }
+        public ICollection<ActivityPet> PetsActivities { get; set; }
+        public ICollection<FoodPet> PetsFoods { get; set; }
+        public ICollection<PetTraining> PetsTrainings { get; set; }
+        public ICollection<SocialInteractionPet> PetsSocialInteraction { get; set; }
         public Pet()
         {
-            Healths=new HashSet<Health>();
-            Activities=new HashSet<Activity>();
-            Foods=new HashSet<Food>();
+            PetsSocialInteraction=new HashSet<SocialInteractionPet>();
+            Healths =new HashSet<Health>();
+            PetsActivities=new HashSet<ActivityPet>();
+            PetsFoods=new HashSet<FoodPet>();
+            PetsTrainings=new HashSet<PetTraining>();
         }
     }
 }

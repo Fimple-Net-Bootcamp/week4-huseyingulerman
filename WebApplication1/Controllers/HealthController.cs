@@ -33,12 +33,10 @@ namespace week4_huseyingulerman.Api.Controllers
             var appResultHealth = await _healthService.GetHealtyByPetId(petid);
             appResultHealth.Situation = Situation;
             var a = _mapper.Map<HealthUpdateDTO>(appResultHealth);
-         
-            
            var ab= await _healthService.UpdateAsync(a);
        
 
-            return CreatedAtAction(nameof(GetById), new {petid= ab.Data}, ab);
+            return CreatedAtAction(nameof(GetById), new {petid= a}, a);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace week4_huseyingulerman.Repository.Repositories
             return _dbSet.Where(x => x.IsActive).AsNoTracking();
         }
 
-        public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+        public async Task<T> GetByIdAsync(int id) => await _dbSet.AsNoTracking().SingleOrDefaultAsync(x=>x.Id==id);
 
         public bool Remove(T entity)
         {
@@ -91,8 +91,10 @@ namespace week4_huseyingulerman.Repository.Repositories
         {
             try
             {
-                //_dbSet.Update(entity);
-                _dbSet.Attach(entity) ;
+
+                _dbSet.Attach(entity);
+                _dbSet.Update(entity);
+                //_dbSet.Attach(entity) ;
                 return true;
             }
             catch (Exception)

@@ -14,5 +14,7 @@ namespace week4_huseyingulerman.Core.Services
     public interface IPetService:IService<Pet,PetCreateDTO,PetDTO>
     {
         Task<IAppResult<NoContentDTO>> UpdatePetAsync(int id, PetUpdateDTO request);
+        Task<IAppResult<List<PetStatisticDTO>>> GetAllPetStatisticByPetId(int id);
+        Task<IAppResult<List<UserStatisticDTO>>> GetUserStatisticsByUserId(string id);
     }
 }

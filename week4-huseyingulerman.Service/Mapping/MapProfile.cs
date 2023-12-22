@@ -53,11 +53,37 @@ namespace week4_huseyingulerman.Service.Mapping
 
             CreateMap<FoodPet, FoodPetDTO>()
                .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.Pet.Name))
-               .ForMember(dest => dest.FoodName, opt => opt.MapFrom(src => src.Food.Name));
+               .ForMember(dest => dest.FoodName, opt => opt.MapFrom(src => src.Food.Name)).ReverseMap();
               /* .ForMember(dest => dest.FoodDate, opt => opt.MapFrom(src => src.CreatedDate)).ReverseMap()*/;
 
+            CreateMap<Pet, PetStatisticDTO>()
+             .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.Name))
+             .ForMember(dest => dest.FoodName, opt => opt.MapFrom(src => src.PetsFoods.Select(x=>x.Food.Name).ToList()))
+              .ForMember(dest => dest.ActivityName, opt => opt.MapFrom(src => src.PetsActivities.Select(x => x.Activity.Name).ToList()))
+               .ForMember(dest => dest.HealthName, opt => opt.MapFrom(src => src.Healths.Select(x => x.Situation).ToList()));
 
 
+            CreateMap<Pet, UserStatisticDTO>()
+            .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.AppUser.UserName))
+            .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.AppUser.Pets.Select(x=>x.Name).ToList()))
+             .ForMember(dest => dest.FoodName, opt => opt.MapFrom(src => src.PetsFoods.Select(x => x.Food.Name).ToList()))
+             .ForMember(dest => dest.ActivityName, opt => opt.MapFrom(src => src.PetsActivities.Select(x => x.Activity.Name).ToList()))
+              .ForMember(dest => dest.HealthName, opt => opt.MapFrom(src => src.Healths.Select(x => x.Situation).ToList()));
+
+
+
+            CreateMap<PetTraining, PetTrainingDTO>()
+               .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.Pet.Name))
+               .ForMember(dest => dest.TrainingName, opt => opt.MapFrom(src => src.Training.Name))
+               .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+               .ReverseMap();
+
+            CreateMap<PetTraining, PetWithTrainingDTO>()
+                 .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.Training.TrainingsPets.Select(x => x.Pet.Name).ToList()))
+                 .ForMember(dest => dest.TrainingName, opt => opt.MapFrom(src => src.Training.TrainingsPets.Select(x=>x.Training.Name).ToList()))
+                  .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Training.TrainingsPets.Select(x => x.Training.Price).ToList()))
+                  .ForMember(dest => dest.Species, opt => opt.MapFrom(src => src.Pet.PetsTrainings.Select(x => x.Pet.Species).ToList()))
+                  ;
         }
     }
 }

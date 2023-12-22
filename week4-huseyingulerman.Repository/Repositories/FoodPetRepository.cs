@@ -23,8 +23,8 @@ namespace week4_huseyingulerman.Repository.Repositories
                 PetId=petid
             };
             await _context.FoodsPets.AddAsync(foodPet);
-            var data = _context.FoodsPets.Include(x => x.Pet).ThenInclude(x => x.Foods).FirstOrDefault(x => x.FoodId == foodPet.FoodId && x.PetId == foodPet.PetId);
-            return data;
+            var data = _context.FoodsPets.Include(x => x.Pet).FirstOrDefault(x => x.FoodId == foodPet.FoodId && x.PetId == foodPet.PetId);
+            return foodPet;
             //await _context.FoodsPets.AddAsync(foodPet);
             //return foodPet;
         }

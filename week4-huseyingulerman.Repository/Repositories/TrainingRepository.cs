@@ -9,14 +9,12 @@ using week4_huseyingulerman.Core.Repositories;
 
 namespace week4_huseyingulerman.Repository.Repositories
 {
-    public class HealthRepository : GenericRepository<Health>, IHealthRepository
+    public class TrainingRepository : GenericRepository<Training>, ITrainingRepository
     {
-        public HealthRepository(AppDbContext context) : base(context)
+        public TrainingRepository(AppDbContext context) : base(context)
         {
         }
-        public async Task<Health> GetHealtyByPetId(int id)
-        {
-            return await _context.Healths.AsNoTracking().Where(x => x.PetId == id).FirstOrDefaultAsync();
-        }
+
+  
     }
 }

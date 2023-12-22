@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace week4_huseyingulerman.Core.Entities
 {
-    public class Food:BaseEntity
+    public class Training:BaseEntity
     {
         public string Name { get; set; }
-        public int Calory { get; set; }
-        public ICollection<FoodPet> FoodsPets { get; set; }
-        public Food()
+        public decimal Price { get; set; }
+        public ICollection<PetTraining> TrainingsPets { get; set; }
+        public Training()
         {
-            FoodsPets=new HashSet<FoodPet>();
+            TrainingsPets= new HashSet<PetTraining>();
         }
     }
 }

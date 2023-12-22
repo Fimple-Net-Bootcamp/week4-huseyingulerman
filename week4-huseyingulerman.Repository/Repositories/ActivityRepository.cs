@@ -21,7 +21,7 @@ namespace week4_huseyingulerman.Repository.Repositories
 
         public async Task<List<Activity>> GetActivityByPetId(int id)
         {
-            var a= await _context.Activities.Include(x => x.Pets).Where(x => x.Id == id).ToListAsync();
+            var a= await _context.Activities.Include(x => x.ActivitiesPets).ThenInclude(x=>x.Pet).Where(x => x.Id == id).ToListAsync();
             return a;
 
         }

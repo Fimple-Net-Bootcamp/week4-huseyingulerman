@@ -9,10 +9,10 @@ namespace week4_huseyingulerman.Core.Entities
     public class Activity:BaseEntity
     {
         public string Name { get; set; }
-        public ICollection<Pet> Pets { get; set; }
+        public ICollection<ActivityPet> ActivitiesPets { get; set; }
         public Activity()
         {
-            Pets=new HashSet<Pet>();
+            ActivitiesPets=new HashSet<ActivityPet>();
         }
     }
 }

@@ -26,6 +26,25 @@ namespace week4_huseyingulerman.Service.Services
             _petRepository=petRepository;
             _mapper=mapper;
         }
+
+        public async Task<IAppResult<List<PetStatisticDTO>>> GetAllPetStatisticByPetId(int id)
+        {
+            var pet = await _petRepository.GetAllPetStatisticByPetId(id);
+            var petStatisticDTOs = _mapper.Map<List<PetStatisticDTO>>(pet);
+            return AppResult<List<PetStatisticDTO>>.Success(StatusCodes.Status200OK, petStatisticDTOs);
+        }
+
+        public async Task<IAppResult<List<UserStatisticDTO>>> GetUserStatisticsByUserId(string id)
+        {
+            //var pet = await _petRepository.GetAllPetStatisticByPetId(id);
+            //var petStatisticDTOs = _mapper.Map<List<PetStatisticDTO>>(pet);
+            //return AppResult<List<PetStatisticDTO>>.Success(StatusCodes.Status200OK, petStatisticDTOs);
+
+            var user = await _petRepository.GetUserStatisticsByUserId(id);
+            var userStatisticDTOs=_mapper.Map<List<UserStatisticDTO>>(user);
+            return AppResult<List<UserStatisticDTO>>.Success(StatusCodes.Status200OK, userStatisticDTOs);
+        }
+
         public async Task<IAppResult<NoContentDTO>> UpdatePetAsync(int id, PetUpdateDTO request)
         {
             var a = _mapper.Map<Pet>((await GetByIdAsync(id)).Data);

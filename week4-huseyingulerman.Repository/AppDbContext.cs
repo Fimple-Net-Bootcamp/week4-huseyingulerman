@@ -24,6 +24,10 @@ namespace week4_huseyingulerman.Repository
         public DbSet<Health> Healths { get; set; }
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Food> Foods { get; set; }
+        public DbSet<Training> Trainings { get; set; }
+        public DbSet<PetTraining> PetTrainings { get; set; }
+        public DbSet<SocialInteraction> SocialInteractions { get; set; }
+        public DbSet<SocialInteractionPet> SocialInteractionPets { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
