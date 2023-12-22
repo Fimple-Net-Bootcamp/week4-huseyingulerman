@@ -82,8 +82,20 @@ namespace week4_huseyingulerman.Service.Mapping
                  .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.Training.TrainingsPets.Select(x => x.Pet.Name).ToList()))
                  .ForMember(dest => dest.TrainingName, opt => opt.MapFrom(src => src.Training.TrainingsPets.Select(x=>x.Training.Name).ToList()))
                   .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Training.TrainingsPets.Select(x => x.Training.Price).ToList()))
-                  .ForMember(dest => dest.Species, opt => opt.MapFrom(src => src.Pet.PetsTrainings.Select(x => x.Pet.Species).ToList()))
-                  ;
+                  .ForMember(dest => dest.Species, opt => opt.MapFrom(src => src.Pet.PetsTrainings.Select(x => x.Pet.Species).ToList()));
+
+
+            CreateMap<SocialInteractionPet, PetSocialInteractionDTO>()
+             .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.Pet.Name))
+             .ForMember(dest => dest.SocialInteractionName, opt => opt.MapFrom(src => src.SocialInteraction.Name))
+             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+             .ReverseMap();
+
+            CreateMap<SocialInteractionPet, PetWithSocialInteractionDTO>()
+                 .ForMember(dest => dest.PetName, opt => opt.MapFrom(src => src.SocialInteraction.SocialInteractionPets.Select(x => x.Pet.Name).ToList()))
+                 .ForMember(dest => dest.SocialInteactionName, opt => opt.MapFrom(src => src.SocialInteraction.SocialInteractionPets.Select(x => x.SocialInteraction.Name).ToList()))
+                  .ForMember(dest => dest.Place, opt => opt.MapFrom(src => src.Pet.PetsSocialInteraction.Select(x => x.SocialInteraction.Place).ToList()))
+                  .ForMember(dest => dest.Species, opt => opt.MapFrom(src => src.Pet.PetsSocialInteraction.Select(x => x.Pet.Species).ToList()));
         }
     }
 }

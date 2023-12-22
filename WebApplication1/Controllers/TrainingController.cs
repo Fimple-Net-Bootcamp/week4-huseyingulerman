@@ -31,7 +31,7 @@ namespace week4_huseyingulerman.Api.Controllers
 
 
             return StatusCode(appResultPetTraining.StatusCode);
-            //return CreatedAtAction(nameof(GetByPetId), new { petid = appResultPetTraining.Data.PetId }, appResultPetTraining);
+
 
         }
     }
