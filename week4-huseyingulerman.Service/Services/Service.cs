@@ -24,6 +24,7 @@ namespace week4_huseyingulerman.Service.Services
         public Service(IUnitOfWork uow, IMapper mapper)
         {
             _uow =uow;
+
             _mapper=mapper;
         }
         public async Task<IAppResult<TResponse>> AddAsync(TRequest request)
